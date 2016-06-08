@@ -1,0 +1,89 @@
+<section id="site-container" class="admin" ng-controller="isotopeData" ng-init="init()" resize>
+	<div class="breadcrumbs" id="breadcrumbs">
+		<div class="logout pull-right"><a ng-click="logout();">Logout</a></div>
+		<ul class="breadcrumb">
+			<li>
+				<i class="ace-icon fa fa-home home-icon"></i>
+				<a href="#">Home</a>
+			</li>
+			<li class="active">Admin</li>
+		</ul>
+	</div>
+
+	<!--
+	<div class="blog-masthead">
+		<div class="container">
+			<nav class="blog-nav">
+				<a class="blog-nav-item active" href="#/admin">Posts</a>
+				<a class="blog-nav-item" href="#/admin" ng-click="open(post);">New Post</a>
+			</nav>
+		</div>
+	</div>
+	-->
+
+	<div class="container">
+		<div class="page-content">
+			<div class="pull-right"><button type="button" class="btn btn-danger fa fa-plus" ng-click="open(post);">&nbsp;Add New Post</button></div>
+			<h4 class="blog-post-title">Posts</h4>
+			<hr/>
+
+			<div class="table-responsive">
+				<div class="panel panel-primary">
+					<div class="panel-heading">List of posts
+						<div class="sw-search">
+							<div class="nav-search" id="nav-search">
+								Filter: <span class="input-icon">
+								<input placeholder="Filter posts list ..." class="nav-search-input" ng-model="filterPost" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+								<i class="search-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<table class="table table-striped">
+							<tr ng-show="posts.length==0">
+								<td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td>
+							</tr>
+							<tr ng-hide="posts.length>-1">
+								<td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td>
+							</tr>
+
+							<tr>
+								<th ng-repeat="c in columns">{{c.text}}</th>
+							</tr>
+
+							<tr ng-repeat="c in posts | filter:filterPost | orderBy:'-id'" id="{{c.id}}" animate-on-change='c.style + c.class + c.content-what' ng-animate=" 'animate'">
+			<!--					<td>{{c.id}}</td>-->
+								<td>{{c.category}}</td>
+								<td>{{c.title}}</td>
+	<!--							<td>{{c.subtitle}}</td>-->
+			<!--					<td>{{c.image}}</td>-->
+			<!--					<td>{{c.author_firstname}}</td>-->
+			<!--					<td>{{c.author_lastname}}</td>-->
+			<!--					<td>{{c.author_avatar}}</td>-->
+			<!--					<td>{{c.submitted_firstname}}</td>-->
+			<!--					<td>{{c.submitted_lastname}}</td>-->
+			<!--					<td>{{c.submitted_avatar}}</td>-->
+	<!--							<td><a href="{{c.content_url}}" target="_blank">{{c.content_url}}</a></td>-->
+								<td>{{c.content_what | limitTo: 60 }}{{myString.length > 60 ? ' ...' : ''}}</td>
+	<!--							<td>{{c.content_potential | limitTo: 60 }}{{myString.length > 60 ? ' ...' : ''}}</td>-->
+	<!--							<td>{{c.html | limitTo: 60 }}{{myString.length > 60 ? ' ...' : ''}}</td>-->
+								<td>{{c.style}}</td>
+	<!--							<td>{{c.class}}</td>-->
+								<td>
+									<button class="btn" ng-class="{Active:'btn-success', Inactive:''}[c.status]" ng-click="changePostStatus(c);">{{c.status}}</button>
+								</td>
+								<td style="width:100px">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);"></button>
+										<button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deletePost(c);"></button>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

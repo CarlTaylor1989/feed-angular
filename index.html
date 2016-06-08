@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+	
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Feed</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="img/favicons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="img/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="img/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500|Roboto+Condensed:400,300|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="styles/admin.css" type="text/css" />
+	<link rel="stylesheet" href="styles/toaster.css" />
+	<link rel="stylesheet" href="styles/main.css" />
+	<link rel="stylesheet" href="styles/font-awesome.min.css" />
+	<link rel="stylesheet" href="styles/style.css" />
+	<base href="/">
+</head>
+	
+<body ng-app="FeedApp" ng-cloak="" id="ng-app">
+	
+	<!--[if lte IE 9]>
+	<div class="browserfail">
+		<div class="container">
+			<img src="img/feed-white.svg" class="logo" alt="FEED">
+			<h1>Browser fail</h1>
+			<h2>You appear to be using a sub-standard browser to view this site.</h2>
+			<p><a href="http://www.google.com/chrome/" class="fa fa-link"><span>Do yourself a favour, please go and get Chrome</span></a></p>
+		</div>
+	</div>
+	<![endif]-->
+	<section id="site-container" class="iso-section" ng-controller="isotopeData" ng-init="init()" resize>
+	
+		<div id="mainnav">
+			<div id="logo" class="logo" alt="OgilvyOne dnx Digital Team"></div>
+			<div id="icons" class="filter-controls" opt-kind ok-key="filter">
+				<button type="button" ng-click="isoTab('')" class="button btn-iso btn-show active" ok-sel="*"><div id="atomic" class="icon"></div>All</button>
+				<button type="button" ng-click="isoTab('experiences')" class="button btn-iso btn-experiences" ok-sel=".experiences"><div id="lamp" class="icon" ok-sel=".experiences"></div>Experiences</button>
+				<button type="button" ng-click="isoTab('stories')" class="button btn-iso btn-stories" ok-sel=".stories"><div id="micro" class="icon" ok-sel=".stories"></div>Stories</button>
+				<button type="button" ng-click="isoTab('tools')" class="button btn-iso btn-tools" ok-sel=".tools"><div id="mix" class="icon" ok-sel=".tools"></div>Tools</button>
+				<button type="button" ng-click="isoTab('labs')" class="button btn-iso btn-labs" ok-sel=".labs"><div id="lab" class="icon" ok-sel=".labs"></div>Labs</button>
+				<button type="button" ng-click="isoTab('braindump')" class="button btn-iso btn-braindump" ok-sel=".braindump,.featured-braindump"><div id="brain" class="icon" ok-sel=".braindump"></div>Brain Dump</button>
+			</div>
+		</div>
+
+		<div id="container">
+			<div id="one-column" class="isotope">
+				<ul id="isotopeContainer" isotope-container="" ng-cloak="" iso-options="">
+					<li ng-repeat="iso in isodata" isotope-item="" ng-style="style()" class="story {{ iso.style }} {{ iso.category }} isotope-item">
+						<!-- Regular Template -->
+						<a href="#/{{iso.beauUrl}}" class="iso-regular iso-item-box loaded" ng-click="navButtonClicked(iso.id)" data-url-id="{{iso.id}}" ng-if="iso.style == 'regular'" regular-template story-hover>
+							<img ng-src="{{ iso.image }}" class="bgimg">
+							<div class="info">
+								<h3>{{ iso.title }}</h3>
+							</div>
+						</a>
+
+						<!-- Featured Template -->
+						<a href="#/{{iso.beauUrl}}" class="iso-featured iso-item-box loaded" ng-click="navButtonClicked(iso.id)"  data-url-id="{{iso.id}}" ng-if="iso.style == 'featured'" featured-template story-hover>
+							<img ng-src="{{ iso.image }}" class="bgimg">
+							<div class="info">
+								<h3>{{ iso.title }}</h3>
+								<hr>
+								<p class="subtitle">{{ iso.subtitle }}</p>
+							</div>
+						</a>
+
+						<!-- Braindump Template -->
+						<a href="#/{{iso.beauUrl}}" class="iso-braindump iso-item-box loaded" ng-click="navButtonClicked(iso.id)"  data-url-id="{{iso.id}}" ng-if="iso.style == 'braindump'" braindump-template story-hover>
+							<h3>{{ iso.title }}</h3>
+							<p class="author">{{iso.author_firstname}} {{iso.author_lastname}}</p>
+							<hr>
+							<p class="subtitle">{{iso.subtitle}}</p>
+						</a>
+
+						<!-- Featured Braindump Template -->
+						<a href="#/{{iso.beauUrl}}" class="iso-featured-braindump iso-item-box loaded" ng-click="navButtonClicked(iso.id)"  data-url-id="{{iso.id}}" ng-if="iso.style == 'featured-braindump'" featured-braindump-template story-hover>
+							<h3>{{ iso.title }}</h3>
+							<p class="author">{{iso.author_firstname}} {{iso.author_lastname}}</p>
+							<hr>
+							<p class="subtitle">{{iso.subtitle}}</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</section>
+
+	<div class="slide-animation page {{ pageClass }}" id="ng-view"  ng-view></div>
+	
+	<footer id="footer">
+		<p>Feed 2.0 |
+			<script>
+				document.write(new Date().getFullYear())
+			</script> | Content brought to you by OgilvyOne DNX Digital Team</p>
+	</footer>
+	
+	<a href="" ng-click="toggle()" id="plusbtn">+</a>
+	
+	<div ng-show="submissionForm" id="submissionForm" class="submissionForm">
+		<a class="fa fa-close" href="" ng-click="toggle()"></a>
+		<h2>Submit a resource</h2>
+		<hr>
+		<p>Have you come across a digital resource worth sharing with the group?</p>
+		<form ng-controller="MainCtrl" name="post_form" role="form" ng-submit="savePostFromHome()" novalidate>
+			<input type="text" class="form-control" name="author_firstname" placeholder="First name" ng-model="author_firstname" mod="post" required focus/>
+			<input type="text" class="form-control" name="author_lastname" placeholder="Last name" ng-model="author_lastname" mod="post" required focus/>
+			<input type="text" id="input-3" placeholder="Email" ng-model="submitted_email" required>
+			<input type="text" class="form-control" name="content_url" placeholder="Content Url" ng-model="content_url" mod="post" required focus/>
+			<textarea class="form-control" name="content_what" placeholder="Content What" ng-model="content_what" mod="post">{{post.content_what}}</textarea>
+			<button ng-disabled="post_form.$invalid || enableUpdate" class="btn btn-sm btn-primary" type="submit" ng-click="toggle()">
+				Submit
+			</button>
+		</form>
+	</div>
+	
+	<toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+  <!-- / toaster directive -->
+	<script src="scripts/vendor/jquery-2.1.0.min.js"></script>
+	<script src="scripts/vendor/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-sanitize.min.js"></script>
+	<script src="scripts/vendor/jquery.isotope.js"></script>
+	<script src="scripts/angular-isotope.js"></script>
+	<script src="scripts/toaster.js"></script>
+	
+	<script src="scripts/vendor/ui-bootstrap-tpls-0.11.2.min.js"></script>  
+
+	<!-- AngularJS custom codes -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/data.js"></script>
+	<script src="scripts/main.js"></script>
+	<script src="scripts/directives.js"></script>
+	<script src="scripts/postsCtrl.js"></script>
+
+<!--	<script src="scripts/vendor/jquery.min.js"></script>-->
+	<script src="scripts/vendor/bootstrap.min.js"></script>
+	<script src="scripts/vendor/underscore.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="scripts/vendor/ie10-viewport-bug-workaround.js"></script>
+	<script src="scripts/vendor/jquery.lazylinepainter-1.5.1.js"></script>
+	<script src="scripts/animations.js"></script>
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-2207331-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+	
+</body>
+	
+</html>

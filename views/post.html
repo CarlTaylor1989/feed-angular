@@ -1,0 +1,69 @@
+<section id="site-container">
+	<div class="postwrapper {{ post.style }}">
+		
+		<div class="post" ng-if="post.style == 'regular'" regular-template>
+			<div class="media" ng-style="{'background-image': 'url('+post.image+ ')'}"></div>
+			<div class="content">
+				<a class="fa fa-close" href="#/"></a>
+				<h1 class="maintitle">{{post.title}}</h1>
+				<h5 class="category">{{post.category}}</h5>
+				<h2 class="subtitle">{{post.subtitle}}</h2>
+				<p class="author"><span>Author:</span> {{post.author_firstname}} {{post.author_lastname}}<span>&nbsp;&nbsp;|&nbsp;&nbsp;Submitted by:</span> {{post.submitted_firstname}} {{post.submitted_lastname}}</p>
+				<hr>
+				<h3>What is it?</h3>
+				<p>{{post.content_what}}</p>
+				<h3>How can we use it?</h3>
+				<p>{{post.content_potential}}</p>
+				<hr>
+				<a href="{{post.content_url}}" target="_blank" class="linkbtn fa fa-link">Visit the source</a>
+			</div>
+		</div>
+		
+		<div class="post" ng-if="post.style == 'featured'" featured-template>
+			<div class="media" ng-style="{'background-image': 'url('+post.image+ ')'}"></div>
+			<div class="content">
+				<a class="fa fa-close" href="#/"></a>
+				<h4 class="pretitle">FEATURED</h4>
+				<h1 class="maintitle">{{post.title}}</h1>
+				<h5 class="category">{{post.category}}</h5>
+				<h2 class="subtitle">{{post.subtitle}}</h2>
+				<p class="author"><span>Author:</span> {{post.author_firstname}} {{post.author_lastname}}<span>&nbsp;&nbsp;|&nbsp;&nbsp;Submitted by:</span> {{post.submitted_firstname}} {{post.submitted_lastname}}</p>
+				<hr>
+				<h3>What is it?</h3>
+				<p>{{post.content_what}}</p>
+				<h3>How can we use it?</h3>
+				<p>{{post.content_potential}}</p>
+				<hr>
+				<a href="{{post.content_url}}" target="_blank" class="linkbtn fa fa-link">Visit the source</a>
+			</div>
+		</div>
+		
+		<div class="post" ng-if="post.style == 'braindump'" braindump-template>
+			<div class="media"></div>
+			<div class="content">
+				<a class="fa fa-close" href="#/"></a>
+				<h4 class="pretitle">BRAIN DUMP</h4>
+				<h1 class="maintitle">{{post.title}}</h1>
+				<h2 class="subtitle">{{post.subtitle}}</h2>
+				<p class="author"><span>From the brain of:</span> {{post.author_firstname}} {{post.author_lastname}}</p>
+				<hr>
+				<div ng-bind-html="loadHTMLcontent(post.html)"></div>
+			</div>
+		</div>
+		
+		<div class="post" ng-if="post.style == 'featured-braindump'" featured-braindump-template>
+			<div class="media"></div>
+			<div class="content">
+				<a class="fa fa-close" href="#/"></a>
+				<h4 class="pretitle">FEATURED BRAIN DUMP</h4>
+				<h1 class="maintitle">{{post.title}}</h1>
+				<h2 class="subtitle">{{post.subtitle}}</h2>
+				<p class="author"><span>From the brain of:</span> {{post.author_firstname}} {{post.author_lastname}}</p>
+				<hr>
+				<div ng-bind-html="loadHTMLcontent(post.html)"></div>
+			</div>
+		</div>
+		
+	</div>
+
+</section>

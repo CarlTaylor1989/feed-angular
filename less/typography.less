@@ -1,0 +1,83 @@
+//Typography
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('@{path-font}/fontawesome-webfont.eot');
+	src: url('@{path-font}/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), 
+		url('@{path-font}/fontawesome-webfont.woff') format('woff'),
+		url('@{path-font}/FontAwesome.otf') format('otf'),
+		url('@{path-font}/fontawesome-webfont.ttf') format('truetype'),
+		url('@{path-font}/fontawesome-webfont.svg#fontawesome') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: 'Roboto Condensed', sans-serif;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+
+h1,
+h3,
+h5 {
+	color: @dkgrey;
+}
+
+h2,
+h4 {
+	color: @red;
+}
+
+h1 {
+	font-size: 50px;
+	font-size: 5.0rem;
+}
+
+h2 {
+	font-size: 25px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 20px;
+}
+h5 {
+	font-size: 18px;
+	font-weight: 400;
+}
+
+p {
+	color: @dkgrey;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+}
+
+strong {
+	font-weight: 700;
+}
+
+
+a {
+	color: @red;
+	text-decoration: none;
+	&:hover {
+		color: @red;
+		text-decoration: underline;
+	}
+}
+
+ul,
+li {
+	list-style: none;
+	padding: 0;
+	color: @dkgrey;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+}

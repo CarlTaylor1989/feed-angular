@@ -1,0 +1,85 @@
+<button type="button" class="close" ng-click="cancel();">
+	<i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+</button>
+<div class="modal-header">
+	<h3 class="modal-title">Edit post [ID: {{post.id}}]</h3>
+</div>
+<div class="modal-body">
+	<form name="post_form" class="form-horizontal" role="form" novalidate>
+		<form-element label="Category" mod="post">
+			<select class="form-control" name="category" placeholder="Category" ng-model="post.category" focus>
+				<option>experiences</option>
+				<option>stories</option>
+				<option>tools</option>
+				<option>labs</option>
+				<option>braindump</option>
+			</select>
+		</form-element>
+		<form-element label="Title" mod="post">
+			<input type="text" class="form-control" name="title" placeholder="Title" ng-model="post.title" focus/>
+		</form-element>
+		<form-element label="Subtitle" mod="post">
+			<input type="text" class="form-control" name="subtitle" placeholder="Subtitle" ng-model="post.subtitle" focus/>
+		</form-element>
+		<form-element label="Image" mod="post">
+			<input type="text" class="form-control" name="image" placeholder="Image" ng-model="post.image" focus/>
+		</form-element>
+		<form-element label="Author Firstname" mod="post">
+			<input type="text" class="form-control" name="author_firstname" placeholder="Author Firstname" ng-model="post.author_firstname" focus/>
+		</form-element>
+		<form-element label="Author Lastname" mod="post">
+			<input type="text" class="form-control" name="author_lastname" placeholder="Author Lastname" ng-model="post.author_lastname" focus/>
+		</form-element>
+		<form-element label="Author Avatar" mod="post">
+			<input type="text" class="form-control" name="author_avatar" placeholder="Author Avatar" ng-model="post.author_avatar" focus/>
+		</form-element>
+		<form-element label="Submitted Firstname" mod="post">
+			<input type="text" class="form-control" name="submitted_firstname" placeholder="Submitted Firstname" ng-model="post.submitted_firstname" focus/>
+		</form-element>
+		<form-element label="Submitted Lastname" mod="post">
+			<input type="text" class="form-control" name="submitted_lastname" placeholder="Submitted Lastname" ng-model="post.submitted_lastname" focus/>
+		</form-element>
+		<form-element label="Submitted Email" mod="post">
+			<input type="text" class="form-control" name="submitted_email" placeholder="Submitted Email" ng-model="post.submitted_email" focus/>
+		</form-element>
+		<form-element label="Submitted Avatar" mod="post">
+			<input type="text" class="form-control" name="submitted_avatar" placeholder="Submitted Avatar" ng-model="post.submitted_avatar" focus/>
+		</form-element>
+		<form-element label="Content Url" mod="post">
+			<input type="text" class="form-control" name="content_url" placeholder="Content Url" ng-model="post.content_url" focus/>
+		</form-element>
+		<form-element label="Content What" mod="post">
+			<textarea class="form-control" name="content_what" placeholder="Content What" ng-model="post.content_what">{{post.content_what}}</textarea>
+		</form-element>
+		<form-element label="Content Potential" mod="post">
+			<textarea class="form-control" name="content_potential" placeholder="Content Potential" ng-model="post.content_potential">{{post.content_potential}}</textarea>
+		</form-element>
+		<form-element label="Html" mod="post">
+			<textarea class="form-control" name="html" placeholder="Html" ng-model="post.html">{{post.content_potential}}</textarea>
+		</form-element>
+		<form-element label="Style" mod="post">
+			<select class="form-control" name="style" placeholder="Style" ng-model="post.style" ng-init="post.style='regular'" focus>
+				<option>regular</option>
+				<option>featured</option>
+				<option>braindump</option>
+				<option>featured-braindump</option>
+			</select>
+		</form-element>
+		<form-element label="Class" mod="post">
+			<input type="text" class="form-control" name="class" placeholder="Class" ng-model="post.class" ng-init="post.class='category'" focus/>
+		</form-element>
+
+		<div class="space"></div>
+		<div class="space-4"></div>
+		<div class="modal-footer">
+			<form-element label="">
+				<div class="text-right">
+					<a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i>Cancel</a>
+					<button ng-click="savePost(post);" ng-disabled="post_form.$invalid || enableUpdate" class="btn btn-sm btn-primary" type="submit">
+						<i class="ace-icon fa fa-check"></i>{{buttonText}}
+					</button>
+				</div>
+			</form-element>
+		</div>
+	</form>
+</div>
